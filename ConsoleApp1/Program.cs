@@ -13,31 +13,36 @@ namespace Bob
     {
         static void Main(string[] args)
         {
-            List<int> list = new List<int>() { 5, 7, 3, 2, 7, 8, 9, 10 };
-            //Parallel.ForEach<int>(new List<int>() { 1, 2, 3, 4, 5, 6, 7, 8 },
-            ParallelLoopResult plr = Parallel.ForEach<int>(list, FactNumb);
-            Parallel.Invoke(() => FactNumb(2), () => FindLenght(list));
+            int numb = 6;
+            Parallel.Invoke(() => FactNumb(numb), () => FindLength(numb), () => FindSum(numb));
         }
         static void FactNumb(int x)
         {
             int result = 1;
             for (int i = 1; i <= x; i++)
-            { 
+            {
                 result *= i;
-                
             }
-            Console.WriteLine($"Factorial of {x} equals {result}");
+            Console.WriteLine($"Factorial {x} equals {result}");
         }
-        static void FindLenght<T>(List<T> list)
+        static void FindLength(int x)
         {
-            int numbsCount = NumbsCount(list);
-            Console.WriteLine(numbsCount);
-            
+            int count = 0;
+            for (int i = 0; i <= x - 1; i++)
+            {
+                count++;
+            }
+            Console.WriteLine($"Count of numbers in: {x} equals: {count}");
         }
 
-        private static int NumbsCount<T>(List<T> list)
+        static void FindSum(int num)
         {
-            return list.AsParallel().Count();
+            int sum = 0;
+            for (int i = 1;i <= num; i++)
+            {
+                sum += num * i;
+            }
+            Console.WriteLine($"Sum of all numbers {sum}");
         }
     }
 }
