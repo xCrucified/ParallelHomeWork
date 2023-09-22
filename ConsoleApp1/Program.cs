@@ -13,8 +13,27 @@ namespace Bob
     {
         static void Main(string[] args)
         {
-            int numb = 6;
-            Parallel.Invoke(() => FactNumb(numb), () => FindLength(numb), () => FindSum(numb));
+            //int numb = 6;
+            //Parallel.Invoke(() => FactNumb(numb), () => FindLength(numb), () => FindSum(numb));
+            int startRange = 1; 
+            int endRange = 1030;
+
+            FactWith(startRange, endRange);
+
+        }
+
+        static void FactWith(int f, int s)
+        {
+            Parallel.For(f, s + 1, i =>
+            {
+                for (int j = 1; j <= 10; j++)
+                {
+                    int result = i * j;
+                    Console.WriteLine($"{i} * {j} = {result}");
+                }
+            });
+            
+
         }
         static void FactNumb(int x)
         {
