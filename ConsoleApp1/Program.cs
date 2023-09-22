@@ -16,7 +16,7 @@ namespace Bob
             //int numb = 6;
             //Parallel.Invoke(() => FactNumb(numb), () => FindLength(numb), () => FindSum(numb));
             int startRange = 1; 
-            int endRange = 1030;
+            int endRange = 10000030;
 
             FactWith(startRange, endRange);
 
